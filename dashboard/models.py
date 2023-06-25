@@ -1,11 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    email = models.EmailField()
-    password = models.CharField()
-
-    def __str__(self):
-        return self.email
 
 class File(models.Model):
     name = models.CharField(max_length=200)

@@ -1,0 +1,34 @@
+{% extends 'layouts/base_form_pages.html' %}
+{% load static %}
+
+{% block title %} TwoCloud {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% endblock %}
+
+{% block body %}
+{% if errors %}
+    <ul>
+        {% for error in errors %}
+        <li style="color: red;">
+            <small>{{error}}</small>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<div class="logo">
+    <img src="{% static 'images/icons/icono_logo.svg' %}" alt="" srcset="">
+    <h1>TwoCloud</h1>
+</div>
+<div class="formContainer">
+    <form action="/" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <small>
+            <a href="{% url 'register' %}">¿No tienes cuenta? Crear una aqui</a>
+        </small>
+        <button class="mainBtn">Iniciar sesion</button>
+    </form>
+</div>
+{% endblock %}

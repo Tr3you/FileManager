@@ -3,8 +3,9 @@ from . import views
 
 urlpatterns = [
     # Funciones de vistas
-    path('', views.login),
-    path('register', views.register),
+    path('', views.login_view, name='login'),
+    path('register', views.register, name='register'),
+    path('logout', views.logout_view, name='logout'),
     path('files', views.my_files, name='files'),
     path('upload', views.upload),
     path('favorites', views.favorites, name='favorites'),
