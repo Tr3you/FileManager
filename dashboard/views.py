@@ -121,3 +121,12 @@ def mark_as_deleted(request, file_id, page_id):
         return redirect("trash")
     elif page_id == 2:
         return redirect("files")
+    
+@require_http_methods(['GET', 'POST'])
+def delete_forever(request, file_id):
+    file = File.objects.get(id=file_id)
+    bucket = storage.bucket()
+    blob = bucket.blob(file.download_url)
+    blob.delete()
+    file.delete()
+    return redirect("trash")

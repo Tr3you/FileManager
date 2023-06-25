@@ -30,6 +30,9 @@
                         <a href="{% url 'mark_as_deleted' file_id=file.id page_id=2 %}">
                             <span class="material-symbols-rounded">undo</span>
                         </a>
+                        <a href="{% url 'deleted_forever' file_id=file.id %}">
+                            <span class="material-symbols-rounded">delete_forever </span>
+                        </a>
                     </ul>
                 </td>
             </tr>
