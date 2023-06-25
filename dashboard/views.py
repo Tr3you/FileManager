@@ -194,3 +194,11 @@ def delete_forever(request, file_id):
     blob.delete()
     file.delete()
     return redirect("trash")
+
+
+def error_500(request, exception=None):
+    return render(request, 'error_500.html', status=500)
+
+
+def error_404(request, exception=None):
+    return render(request, 'error_404.html', status=404)
