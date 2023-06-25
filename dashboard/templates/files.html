@@ -1,0 +1,78 @@
+{% extends 'layouts/base_dashboard.html' %}
+
+{% block title %} Mis archivos {% endblock %}
+
+{% block styles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+
+{% block main %} 
+    <div class="mainHead">
+        <h2>Mis archivos</h2>
+        <p>correo@mail.com</p>
+    </div>
+    <table>
+        <tr>
+            <th style="width: 50%;">Nombre</th>
+            <th>Fecha de subida</th>
+            <th>Acciones</th>
+        </tr>
+        {% for file in files %}
+            <tr>
+                <td>{{file.name}}</td>
+                <td>{{file.date_updated}}</td>
+                <td>
+                    <ul>
+                        <a href="{% url 'load_file_info' file_id=file.id page_id=0 %}">
+                            <span class="material-symbols-rounded">info</span>
+                        </a>
+                        {% if file.is_favorite %}
+                        <a href="{% url 'mark_as_favorite' file_id=file.id page_id=0 %}" style="color: #FFC700;">
+                            <span class="material-symbols-rounded">star</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'mark_as_favorite' file_id=file.id page_id=0 %}">
+                            <span class="material-symbols-rounded">star</span>
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'mark_as_deleted' file_id=file.id page_id=0 %}">
+                            <span class="material-symbols-rounded">delete</span>
+                        </a>
+                        <a href="{% url 'download_file' path=file.download_url %}" target="_blank">
+                            <span class="material-symbols-rounded">download</span>
+                        </a>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{%block file_info %}
+    {% if file_id != None %}
+        <div class="fileInfo">
+            <span class="material-symbols-rounded">info</span>
+            <div class="fileInfo-title">
+                <h5 id="file_name">{{file_info.name}}</h5>
+                <a href="{% url 'files' %}">
+                    <span class="material-symbols-rounded">close</span>
+                </a>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Tipo de archivo</p>
+                <h6 id="type">{{file_info.type}}</h6>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Tamaño</p>
+                <h6 id="size">{{file_info.size}}</h6>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Ultima modificacion</p>
+                <h6 id="last_modified">{{file_info.last_modified}}</h6>
+            </div>
+        </div>
+    {% else %}
+        <p>No hay ningun archivo seleccionado</p>
+    {% endif %}
+{% endblock %}

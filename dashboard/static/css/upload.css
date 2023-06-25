@@ -1,0 +1,64 @@
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-right: 10px;
+    margin-bottom: 3px;
+
+}
+
+.iborrainputfile {
+	font-size: 18px; 
+	font-weight: bold;
+}
+
+.inputfile-1 + label {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    color: #000000;
+    background-color: #e9e9e9;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #0AA88C;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form button{
+    margin-top: 40px;
+}

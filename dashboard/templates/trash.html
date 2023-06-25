@@ -1,0 +1,66 @@
+{% extends 'layouts/base_dashboard.html' %}
+
+{% block title %} Papelera {% endblock %}
+
+{% block styles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+
+{% block main %} 
+    <div class="mainHead">
+        <h2>Papelera</h2>
+        <p>correo@mail.com</p>
+    </div>
+    <table>
+        <tr>
+            <th style="width: 50%;">Nombre</th>
+            <th>Fecha de eliminacion</th>
+            <th>Acciones</th>
+        </tr>
+        {% for file in files %}
+            <tr>
+                <td>{{file.name}}</td>
+                <td>{{file.date_updated}}</td>
+                <td>
+                    <ul>
+                        <a href="{% url 'load_file_info' file_id=file.id page_id=2%}">
+                            <span class="material-symbols-rounded">info</span>
+                        </a>
+                        <a href="{% url 'mark_as_deleted' file_id=file.id page_id=2 %}">
+                            <span class="material-symbols-rounded">undo</span>
+                        </a>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{%block file_info %}
+    {% if file_id != None %}
+        <div class="fileInfo">
+            <span class="material-symbols-rounded">info</span>
+            <div class="fileInfo-title">
+                <h5>{{file_info.name}}</h5>
+                <a href="{% url 'trash' %}">
+                    <span class="material-symbols-rounded">close</span>
+                </a>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Tipo de archivo</p>
+                <h6>{{file_info.type}}</h6>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Tamaño</p>
+                <h6>{{file_info.size}}</h6>
+            </div>
+            <div class="fileInfo-infoItem">
+                <p>Ultima modificacion</p>
+                <h6>{{file_info.last_modified}}</h6>
+            </div>
+        </div>
+    {% else %}
+        <p>No hay ningun archivo seleccionado</p>
+    {% endif %}
+{% endblock %}

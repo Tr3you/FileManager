@@ -1,0 +1,154 @@
+/************************************** ESTILOS GENERALES ************************************************/
+html, body, :root{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+}
+
+/************************************** ESTILOS PRIMER COLUMNA ************************************************/
+
+body .FirstColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body .FirstColumn button{
+    background-color: #0AA88C;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    padding: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+body .FirstColumn h1{
+    margin: 0;
+}
+
+body .FirstColumn .logo{
+    text-align: center;
+    margin-top: 10px;
+}
+
+body .FirstColumn img{
+    width: 50px;
+}
+
+body .FirstColumn nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+body .FirstColumn ul{
+    padding: 0;
+    list-style: none;
+}
+
+body .FirstColumn ul button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+body .FirstColumn li{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+body .FirstColumn li a{
+    margin-left: 10px;
+}
+
+body .FirstColumn a{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}
+
+body .FirstColumn .logoutBtn{
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+/************************************** ESTILOS SEGUNDA COLUMNA ************************************************/
+body main{
+    height: 96vh;
+    padding: 2vh;
+}
+
+body main .mainHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+body .SecondColumn{
+    height: 100%;
+    background-color: #f1f1f1;
+    border-radius: 50px;
+}
+/************************************** ESTILOS TERCER COLUMNA ************************************************/
+body .ThirdColumn{
+    padding: 0 10px;
+    text-align: center;
+}
+
+body .ThirdColumn p{
+    margin-top: 5rem;
+    font-weight: 500;
+    color: #DDDDDD;
+    font-size: 18px;
+}
+
+body .ThirdColumn .fileInfo span{
+    font-size: 5rem;
+    color:#0AA88C
+}
+
+body .ThirdColumn .fileInfo .fileInfo-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+body .ThirdColumn .fileInfo .fileInfo-title h5{
+    margin: 0;
+    font-size: 1.2rem;
+    color:#0AA88C
+}
+
+body .ThirdColumn .fileInfo .fileInfo-title span{
+    font-size: 30px;
+    color:#0AA88C;
+}
+
+body .ThirdColumn .fileInfo-infoItem{
+    margin-bottom: 50px;
+}
+
+body .ThirdColumn .fileInfo-infoItem h6{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+body .ThirdColumn .fileInfo-infoItem p{
+    margin: 0;
+    font-size: 15px;
+    color: black;
+}
