@@ -136,10 +136,10 @@ def load_file_info(request, file_id, page_id):
     page = 'files.html' if page_id == 0 else 'favorites.html' if page_id == 1 else 'trash.html'
     if page_id == 0:
         page = 'files.html'
-        files = files = list(File.objects.filter(user=request.user.id))
+        files = files = list(File.objects.filter(user=request.user.id, is_deleted=False))
     elif page_id == 1:
         page = 'favorites.html'
-        files = list(File.objects.filter(user=request.user.id, is_favorite=True))
+        files = list(File.objects.filter(user=request.user.id, is_favorite=True, is_deleted=False))
     elif page_id == 2:
         page = 'trash.html'
         files = list(File.objects.filter(user=request.user.id, is_deleted=True))
