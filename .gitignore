@@ -1,5 +1,3 @@
 .vscode
 venv
-firebase_key.json
 __pycache__
-migrations

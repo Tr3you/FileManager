@@ -33,8 +33,11 @@ def login_view(request):
             errors = ['Correo electronico o contraseña invalida']
             return render(request, 'index.html', {'form': form, 'errors': errors})
     else:
-        form = LoginForm()
-        return render(request, 'index.html', {'form': form})
+        if request.user.is_authenticated:
+            return redirect('files')
+        else:
+            form = LoginForm()
+            return render(request, 'index.html', {'form': form})
 
 
 @require_http_methods(['GET', 'POST'])
@@ -49,15 +52,18 @@ def register(request):
             if confirm_password != password:
                 errors.append('La contraseña y su confirmacion no coinciden')
 
-            if(len(errors) > 0):
+            if len(errors) > 0:
                 form = RegisterForm(request.POST)
                 return render(request, 'register.html', {'form': form, 'errors': errors})
             else:
                 User.objects.create_user(username=username, password=password)
                 return redirect('login')
     else:
-        form = RegisterForm()
-        return render(request, 'register.html', {'form': form})
+        if request.user.is_authenticated:
+            return redirect('files')
+        else:
+            form = RegisterForm()
+            return render(request, 'register.html', {'form': form})
 
 @login_required
 @require_http_methods(['GET', 'POST'])
@@ -72,7 +78,8 @@ def my_files(request):
     files = list(File.objects.filter(user=request.user.id, is_deleted=False))
     return render(request, 'files.html', {
         'file_id': None,
-        'files': files
+        'files': files,
+        'user_email': request.user.username
     })
 
 
