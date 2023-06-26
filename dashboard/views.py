@@ -114,7 +114,8 @@ def favorites(request):
         user=request.user.id, is_favorite=True, is_deleted=False))
     return render(request, 'favorites.html', {
         'file_id': None,
-        'files': files
+        'files': files,
+        'user_email': request.user.username
     })
 
 
@@ -124,7 +125,8 @@ def trash_bin(request):
     files = list(File.objects.filter(user=request.user.id, is_deleted=True))
     return render(request, 'trash.html', {
         'file_id': None,
-        'files': files
+        'files': files,
+        'user_email': request.user.username
     })
 
 
