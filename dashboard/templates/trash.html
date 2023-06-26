@@ -21,7 +21,7 @@
         {% for file in files %}
             <tr>
                 <td>{{file.name}}</td>
-                <td>{{file.date_updated}}</td>
+                <td>{{file.date_deleted}}</td>
                 <td>
                     <ul>
                         <a href="{% url 'load_file_info' file_id=file.id page_id=2%}">

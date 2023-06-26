@@ -185,6 +185,7 @@ def mark_as_favorite(request, file_id, page_id):
 def mark_as_deleted(request, file_id, page_id):
     file = File.objects.get(id=file_id)
     file.is_deleted = not file.is_deleted
+    file.date_deleted = datetime.now().date().isoformat()
     file.save()
     if page_id == 0:
         return redirect("trash")
